@@ -1,0 +1,218 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "LoadTest/1.0.0": {
+        "dependencies": {
+          "Microsoft.VisualStudio.Threading": "16.6.13"
+        },
+        "runtime": {
+          "LoadTest.dll": {}
+        }
+      },
+      "Microsoft.Bcl.AsyncInterfaces/1.0.0": {
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "4.700.19.46214"
+          }
+        }
+      },
+      "Microsoft.NETCore.Platforms/3.0.0": {},
+      "Microsoft.VisualStudio.Threading/16.6.13": {
+        "dependencies": {
+          "Microsoft.Bcl.AsyncInterfaces": "1.0.0",
+          "Microsoft.VisualStudio.Threading.Analyzers": "16.6.13",
+          "Microsoft.VisualStudio.Validation": "15.5.31",
+          "Microsoft.Win32.Registry": "4.6.0",
+          "System.Threading.Tasks.Extensions": "4.5.3"
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/Microsoft.VisualStudio.Threading.dll": {
+            "assemblyVersion": "16.6.0.0",
+            "fileVersion": "16.6.13.24823"
+          }
+        },
+        "resources": {
+          "lib/netcoreapp3.0/cs/Microsoft.VisualStudio.Threading.resources.dll": {
+            "locale": "cs"
+          },
+          "lib/netcoreapp3.0/de/Microsoft.VisualStudio.Threading.resources.dll": {
+            "locale": "de"
+          },
+          "lib/netcoreapp3.0/es/Microsoft.VisualStudio.Threading.resources.dll": {
+            "locale": "es"
+          },
+          "lib/netcoreapp3.0/fr/Microsoft.VisualStudio.Threading.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/netcoreapp3.0/it/Microsoft.VisualStudio.Threading.resources.dll": {
+            "locale": "it"
+          },
+          "lib/netcoreapp3.0/ja/Microsoft.VisualStudio.Threading.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/netcoreapp3.0/ko/Microsoft.VisualStudio.Threading.resources.dll": {
+            "locale": "ko"
+          },
+          "lib/netcoreapp3.0/pl/Microsoft.VisualStudio.Threading.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/netcoreapp3.0/pt-BR/Microsoft.VisualStudio.Threading.resources.dll": {
+            "locale": "pt-BR"
+          },
+          "lib/netcoreapp3.0/ru/Microsoft.VisualStudio.Threading.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/netcoreapp3.0/tr/Microsoft.VisualStudio.Threading.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/netcoreapp3.0/zh-Hans/Microsoft.VisualStudio.Threading.resources.dll": {
+            "locale": "zh-Hans"
+          },
+          "lib/netcoreapp3.0/zh-Hant/Microsoft.VisualStudio.Threading.resources.dll": {
+            "locale": "zh-Hant"
+          }
+        }
+      },
+      "Microsoft.VisualStudio.Threading.Analyzers/16.6.13": {},
+      "Microsoft.VisualStudio.Validation/15.5.31": {
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.VisualStudio.Validation.dll": {
+            "assemblyVersion": "15.3.0.0",
+            "fileVersion": "15.5.31.7307"
+          }
+        },
+        "resources": {
+          "lib/netstandard2.1/cs/Microsoft.VisualStudio.Validation.resources.dll": {
+            "locale": "cs"
+          },
+          "lib/netstandard2.1/de/Microsoft.VisualStudio.Validation.resources.dll": {
+            "locale": "de"
+          },
+          "lib/netstandard2.1/es/Microsoft.VisualStudio.Validation.resources.dll": {
+            "locale": "es"
+          },
+          "lib/netstandard2.1/fr/Microsoft.VisualStudio.Validation.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/netstandard2.1/it/Microsoft.VisualStudio.Validation.resources.dll": {
+            "locale": "it"
+          },
+          "lib/netstandard2.1/ja/Microsoft.VisualStudio.Validation.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/netstandard2.1/ko/Microsoft.VisualStudio.Validation.resources.dll": {
+            "locale": "ko"
+          },
+          "lib/netstandard2.1/pl/Microsoft.VisualStudio.Validation.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/netstandard2.1/pt-BR/Microsoft.VisualStudio.Validation.resources.dll": {
+            "locale": "pt-BR"
+          },
+          "lib/netstandard2.1/ru/Microsoft.VisualStudio.Validation.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/netstandard2.1/tr/Microsoft.VisualStudio.Validation.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/netstandard2.1/zh-Hans/Microsoft.VisualStudio.Validation.resources.dll": {
+            "locale": "zh-Hans"
+          },
+          "lib/netstandard2.1/zh-Hant/Microsoft.VisualStudio.Validation.resources.dll": {
+            "locale": "zh-Hant"
+          }
+        }
+      },
+      "Microsoft.Win32.Registry/4.6.0": {
+        "dependencies": {
+          "System.Security.AccessControl": "4.6.0",
+          "System.Security.Principal.Windows": "4.6.0"
+        }
+      },
+      "System.Security.AccessControl/4.6.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "3.0.0",
+          "System.Security.Principal.Windows": "4.6.0"
+        }
+      },
+      "System.Security.Principal.Windows/4.6.0": {},
+      "System.Threading.Tasks.Extensions/4.5.3": {}
+    }
+  },
+  "libraries": {
+    "LoadTest/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.Bcl.AsyncInterfaces/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-K63Y4hORbBcKLWH5wnKgzyn7TOfYzevIEwIedQHBIkmkEBA9SCqgvom+XTuE+fAFGvINGkhFItaZ2dvMGdT5iw==",
+      "path": "microsoft.bcl.asyncinterfaces/1.0.0",
+      "hashPath": "microsoft.bcl.asyncinterfaces.1.0.0.nupkg.sha512"
+    },
+    "Microsoft.NETCore.Platforms/3.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-TsETIgVJb/AKoYfSP+iCxkuly5d3inZjTdx/ItZLk2CxY85v8083OBS3uai84kK3/baLnS5/b5XGs6zR7SuuHQ==",
+      "path": "microsoft.netcore.platforms/3.0.0",
+      "hashPath": "microsoft.netcore.platforms.3.0.0.nupkg.sha512"
+    },
+    "Microsoft.VisualStudio.Threading/16.6.13": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ynLycUJgzZggW5P0C2w9waGCU1Oc44ulHYl1EwNx2GAA0QgTOztic2zHUzp4P714hyYi15ycOjT+i2MnszPXAg==",
+      "path": "microsoft.visualstudio.threading/16.6.13",
+      "hashPath": "microsoft.visualstudio.threading.16.6.13.nupkg.sha512"
+    },
+    "Microsoft.VisualStudio.Threading.Analyzers/16.6.13": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ox/2OFrJsTDRLSXdaZgAwXTBYKyU//2tJb4o5jxzloRkENlucloMUdwkyOyH/BVg62ee+zsimsdTrUeeCZY0NQ==",
+      "path": "microsoft.visualstudio.threading.analyzers/16.6.13",
+      "hashPath": "microsoft.visualstudio.threading.analyzers.16.6.13.nupkg.sha512"
+    },
+    "Microsoft.VisualStudio.Validation/15.5.31": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-AOmvJTT4CpamJ2A6J+PBrhKPfs2HXi/MJVxN/QlViewjI4XZDrt/yp3NMto+OOgB25jDnt9IIdNTkjpNBUpXmw==",
+      "path": "microsoft.visualstudio.validation/15.5.31",
+      "hashPath": "microsoft.visualstudio.validation.15.5.31.nupkg.sha512"
+    },
+    "Microsoft.Win32.Registry/4.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Xuqo5Lf5h1eUAbT8sJwNSEgusyEcQQQcza1R8dxJ6q/1vLSU1SG/WxtgiCPAth14dz/IjBXCxWT/+6E9glX33w==",
+      "path": "microsoft.win32.registry/4.6.0",
+      "hashPath": "microsoft.win32.registry.4.6.0.nupkg.sha512"
+    },
+    "System.Security.AccessControl/4.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-gmlk6khICtVhiUnVBBtlsH0H/5QFDqhTZgtpp3AX14wWE6OIE+BX95NLD+X4AolXnIy/oXpNNmXYnsNfW1KuDQ==",
+      "path": "system.security.accesscontrol/4.6.0",
+      "hashPath": "system.security.accesscontrol.4.6.0.nupkg.sha512"
+    },
+    "System.Security.Principal.Windows/4.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Mdukseovp0YIGaz16FMH6nbfgZkrCFOJbtXQptv0aeBO9h775Ilb9+TDwLVTKikoW7y7CY7lpoXl9zmZ5G3ndA==",
+      "path": "system.security.principal.windows/4.6.0",
+      "hashPath": "system.security.principal.windows.4.6.0.nupkg.sha512"
+    },
+    "System.Threading.Tasks.Extensions/4.5.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+MvhNtcvIbqmhANyKu91jQnvIRVSTiaOiFNfKWwXGHG48YAb4I/TyH8spsySiPYla7gKal5ZnF3teJqZAximyQ==",
+      "path": "system.threading.tasks.extensions/4.5.3",
+      "hashPath": "system.threading.tasks.extensions.4.5.3.nupkg.sha512"
+    }
+  }
+}

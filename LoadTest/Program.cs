@@ -13,17 +13,21 @@ namespace LoadTest
         {
             Console.WriteLine("(Index) (ThreadID) (Time)");
          
-            var stopwatchOne = new Stopwatch();
-            await DoLotsOfTaskDotRuns(stopwatchOne, 50);
+            var numOfTasks = 1000;
 
             var stopwatchTwo = new Stopwatch();
-            await DoLotsOfJoinableTasks(stopwatchTwo, 50);
+            var joinableTasks = DoLotsOfJoinableTasksAsync(stopwatchTwo, numOfTasks);
 
-            ShowElapsedTime(nameof(DoLotsOfTaskDotRuns), stopwatchOne.Elapsed);
-            ShowElapsedTime(nameof(DoLotsOfJoinableTasks), stopwatchTwo.Elapsed);
+            var stopwatchOne = new Stopwatch();
+            var dotRunTasks = DoLotsOfTaskDotRunsAsync(stopwatchOne, numOfTasks);
+
+            Task.WaitAll(joinableTasks,dotRunTasks);
+
+            ShowElapsedTime(nameof(DoLotsOfTaskDotRunsAsync), stopwatchOne.Elapsed);
+            ShowElapsedTime(nameof(DoLotsOfJoinableTasksAsync), stopwatchTwo.Elapsed);
         }
 
-        static async Task DoLotsOfJoinableTasks(Stopwatch stopwatch, int range = 10)
+        static async Task DoLotsOfJoinableTasksAsync(Stopwatch stopwatch, int range = 10)
         {
             var factory = new JoinableTaskFactory(new JoinableTaskContext());
             var lotsOfJoinableTasks = Enumerable.Range(0, range).Select(i => factory.RunAsync(() => Task.Run(() => GoSlow(i))).Task).ToList();
@@ -33,7 +37,7 @@ namespace LoadTest
         }
 
 
-        static async Task DoLotsOfTaskDotRuns(Stopwatch stopwatch, int range = 10)
+        static async Task DoLotsOfTaskDotRunsAsync(Stopwatch stopwatch, int range = 10)
         {
             var lotsOfTaskDotRuns = Enumerable.Range(0, range).Select(i => Task.Run(() => GoSlow(i))).ToList();
             stopwatch.Start();
