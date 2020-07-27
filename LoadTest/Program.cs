@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.Threading;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
@@ -9,37 +10,58 @@ namespace LoadTest
 {
     class Program
     {
+        static HashSet<string> THREADIDS;
         static async Task Main(string[] args)
         {
+            THREADIDS = new HashSet<string>();
             Console.WriteLine("(Index) (ThreadID) (Time)");
          
-            var numOfTasks = 1000;
+            var numOfTasks = 100000;
 
-            var stopwatchTwo = new Stopwatch();
-            var joinableTasks = DoLotsOfJoinableTasksAsync(stopwatchTwo, numOfTasks);
+            // var stopwatchOne = new Stopwatch();
+            // var dotRunTasks = DoLotsOfTaskDotRunsAsync(stopwatchOne, numOfTasks);
+
+            JoinableTaskContext context = new JoinableTaskContext();
 
             var stopwatchOne = new Stopwatch();
-            var dotRunTasks = DoLotsOfTaskDotRunsAsync(stopwatchOne, numOfTasks);
+            var joinableTasksOne = DoLotsOfJoinableTasksAsync(stopwatchOne, numOfTasks, context);
 
-            Task.WaitAll(joinableTasks,dotRunTasks);
+            var stopwatchTwo = new Stopwatch();
+            var joinableTasksTwo = DoLotsOfJoinableTasksAsync(stopwatchTwo, numOfTasks, context);
 
-            ShowElapsedTime(nameof(DoLotsOfTaskDotRunsAsync), stopwatchOne.Elapsed);
-            ShowElapsedTime(nameof(DoLotsOfJoinableTasksAsync), stopwatchTwo.Elapsed);
+            var stopwatchThree = new Stopwatch();
+            var joinableTasksThree = DoLotsOfJoinableTasksAsync(stopwatchThree, numOfTasks, context);
+
+            await Task.WhenAll(joinableTasksOne,joinableTasksTwo,joinableTasksThree);
+
+            ShowAllTreadIds();
+            ShowElapsedTime(nameof(joinableTasksOne), stopwatchOne.Elapsed);
+            ShowElapsedTime(nameof(joinableTasksTwo), stopwatchTwo.Elapsed);
+            ShowElapsedTime(nameof(joinableTasksThree), stopwatchThree.Elapsed);
         }
 
-        static async Task DoLotsOfJoinableTasksAsync(Stopwatch stopwatch, int range = 10)
+        static void ShowAllTreadIds()
         {
-            var factory = new JoinableTaskFactory(new JoinableTaskContext());
-            var lotsOfJoinableTasks = Enumerable.Range(0, range).Select(i => factory.RunAsync(() => Task.Run(() => GoSlow(i))).Task).ToList();
+            Console.WriteLine($"== ThreadIDS ({THREADIDS.Count}) ==");
+        }
+
+        static async Task DoLotsOfJoinableTasksAsync(Stopwatch stopwatch, int range = 10, JoinableTaskContext context = null)
+        {
+            var lotsOfJoinableTasks = Enumerable.Range(0, range).Select(i => {
+                if(context == null)
+                    context = new JoinableTaskContext();
+                var factory = new JoinableTaskFactory(context);
+                return factory.RunAsync(() => Task.Run(() => GoSlowAsync(i))).Task;
+                }).ToList();
+
             stopwatch.Start();
             await Task.WhenAll(lotsOfJoinableTasks);
             stopwatch.Stop();
         }
 
-
         static async Task DoLotsOfTaskDotRunsAsync(Stopwatch stopwatch, int range = 10)
         {
-            var lotsOfTaskDotRuns = Enumerable.Range(0, range).Select(i => Task.Run(() => GoSlow(i))).ToList();
+            var lotsOfTaskDotRuns = Enumerable.Range(0, range).Select(i => Task.Run(() => GoSlowAsync(i))).ToList();
             stopwatch.Start();
             await Task.WhenAll(lotsOfTaskDotRuns);
             stopwatch.Stop();
@@ -49,19 +71,19 @@ namespace LoadTest
         {
             string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
             ts.Hours, ts.Minutes, ts.Seconds,
-            ts.Milliseconds / 10);
+            ts.Milliseconds / 2);
 
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine();
             Console.WriteLine($"{label} RunTime {elapsedTime}");
         }
 
-        static void GoSlow(int index)
+        static async Task GoSlowAsync(int index)
         {
             var threadId = Thread.CurrentThread.ManagedThreadId.ToString();
+            THREADIDS.Add(threadId);
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine($"[{index}][{threadId}][{DateTime.Now:ss.fff}] == Start");
-            Thread.Sleep(2000);
+            await Task.Delay(2000);
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"[{index}][{threadId}][{DateTime.Now:ss.fff}] == End");
         }
